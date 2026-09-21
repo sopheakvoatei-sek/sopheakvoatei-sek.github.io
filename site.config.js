@@ -9,7 +9,7 @@ module.exports = {
   author: "SEK Sopheak Voatei", // Author name (for SEO)
   keywords: ["portfolio", "blog", "machine learning", "AI"], // Keywords for SEO
 
-  // Favicon & Icons (optional - customize if needed)
+  // Favicon & Icons (optional - customize if needed)s
   // By default, Next.js uses app/favicon.ico automatically
   // To customize, create icon files and update these paths:
   // - favicon.ico (32x32 or 16x16) - Standard favicon
@@ -24,7 +24,7 @@ module.exports = {
   // Place your image in public/images/ folder (e.g., public/images/profile.jpg)
   // Then set: profileImage: "/images/profile.jpg"
   // Leave as null to show initial letter instead
-  profileImage: "images/me.png",
+  profileImage: "images/me.JPG",
 
   // Current role and affiliation
   role: "M2 student in Applied Mathematics in Data Science: Finance",
@@ -34,7 +34,7 @@ module.exports = {
   aboutSection: {
     show: true,                      // Set to false to hide the About section
     title: "Personal",                  // Customize the section heading (e.g., "Bonjour", "Hello", "Introduction")
-    content: `Master’s student (M2) in Applied Mathematics in Data Science: Finance at Université Paris-Saclay, with hands-on experience in applied Artificial Intelligence through 2 internships. Interested in Data Science and AI, particularly in their pragmatic use to automate tasks, improve operational efficiency, and deliver concrete, data-driven solutions to business needs. Currently seeking a 3-month internship in Data Science, applied AI, or digital transformation starting mid-May 2026.`     // Your introduction text (supports line breaks with \n\n)
+    content: `Master’s student (M2) in Applied Mathematics in Data Science: Finance at Université Paris-Saclay, with hands-on experience in applied Artificial Intelligence through 2 internships. Interested in Data Science and AI, particularly in their pragmatic use to automate tasks, improve operational efficiency, and deliver concrete, data-driven solutions to business needs. Currently seeking a 6-month internship in Data Science or applied AI starting mid-April 2027.`     // Your introduction text (supports line breaks with \n\n)
   },
 
   // Contact section configuration
