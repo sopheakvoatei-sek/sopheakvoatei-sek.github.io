@@ -1,9 +1,9 @@
 ---
-title: "Credit Score Analysis & Risk Management (Python)"
+title: "Credit Score Analysis & Risk Management (Python | Detailed Report)"
 date: "2025-12-31"
 excerpt: "End-to-end credit risk analysis using financial and behavioral data from 1,000 customers. Compared Logistic Regression, Random Forest, and XGBoost for default and credit score prediction, achieving an R² of 0.7735 for credit score regression."
 tags: ["Python", "Machine Learning", "Credit Risk", "Logistic Regression", "Random Forest", "XGBoost", "PCA", "Classification", "Regression"]
-thumbnail: "/portfolio/assets/images/credit-score/thumbnail.png"
+thumbnail: "/images/projects/credit_score/credit_score_distribution.png"
 ---
 
 **ENSIIE – Modeling & Regularized Regression (MRR) Project (2025–2026)**
