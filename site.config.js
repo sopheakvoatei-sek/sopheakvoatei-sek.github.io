@@ -16,7 +16,7 @@ module.exports = {
   // - icon.png (512x512) - Modern browsers & PWA
   // - apple-icon.png (180x180) - Apple devices
   // You can place custom icons in public/ folder or use app/icon.png, app/apple-icon.png
-  favicon: "images/me.png", // Set to "/custom-favicon.ico" if using custom
+  favicon: "images/me.JPG", // Set to "/custom-favicon.ico" if using custom
   icon: null,    // Set to "/icon.png" if using custom
   appleIcon: null, // Set to "/apple-icon.png" if using custom
 
@@ -27,14 +27,14 @@ module.exports = {
   profileImage: "images/me.png",
 
   // Current role and affiliation
-  role: "M1 student in Applied Mathematics",
-  affiliation: "École nationale supérieure d'informatique pour l'industrie et l'entreprise (ENSIIE)",
+  role: "M2 student in Applied Mathematics in Data Science: Finance",
+  affiliation: "Université Paris-Saclay",
 
   // About section configuration
   aboutSection: {
     show: true,                      // Set to false to hide the About section
     title: "Personal",                  // Customize the section heading (e.g., "Bonjour", "Hello", "Introduction")
-    content: `Master’s student (M1) in Applied Mathematics at ENSIIE, with hands-on experience in applied Artificial Intelligence through a 3-month internship. Interested in Data Science and AI, particularly in their pragmatic use to automate tasks, improve operational efficiency, and deliver concrete, data-driven solutions to business needs. Currently seeking a 3-month internship in Data Science, applied AI, or digital transformation starting mid-May 2026.`     // Your introduction text (supports line breaks with \n\n)
+    content: `Master’s student (M2) in Applied Mathematics in Data Science: Finance at Université Paris-Saclay, with hands-on experience in applied Artificial Intelligence through 2 internships. Interested in Data Science and AI, particularly in their pragmatic use to automate tasks, improve operational efficiency, and deliver concrete, data-driven solutions to business needs. Currently seeking a 3-month internship in Data Science, applied AI, or digital transformation starting mid-May 2026.`     // Your introduction text (supports line breaks with \n\n)
   },
 
   // Contact section configuration
