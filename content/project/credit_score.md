@@ -1,5 +1,5 @@
 ---
-title: "Credit Score Analysis & Risk Management (Python | Summary)"
+title: "Credit Score Analysis & Risk Management | Summary"
 date: "2025-12-31"
 excerpt: "End-to-end credit risk analysis using financial and behavioral data from 1,000 customers. Applied statistical methods and machine learning to predict customer default and credit scores, achieving an R² of 0.7735 with Random Forest regression."
 tags: ["Python", "Machine Learning", "Credit Risk", "Logistic Regression", "Random Forest", "XGBoost", "PCA", "Classification", "Regression"]

@@ -36,13 +36,13 @@ module.exports = {
     title: "Personal",                  // Customize the section heading (e.g., "Bonjour", "Hello", "Introduction")
     content: `Master's student (M2) in Applied Mathematics, specializing in Data Science: Finance at Université Paris-Saclay.
         
-    What draws me to Data Science and AI is not only their ability to solve real-world problems, but also the opportunity to be part of an ever-evolving field where new technologies emerge and there is always something new to learn and explore.
+    \n\nWhat draws me to Data Science and AI is not only their ability to solve real-world problems, but also the opportunity to be part of an ever-evolving field where new technologies emerge and there is always something new to learn and explore.
         
-    Throughout my two internships in applied AI, I have developed a deeper interest in using these technologies to automate tasks, improve efficiency, and build practical solutions.
+    \n\nThroughout my two internships in applied AI, I have developed a deeper interest in using these technologies to automate tasks, improve efficiency, and build practical solutions.
         
-    Beyond my studies, I enjoy spending time with family and friends, who inspire me to grow both personally and professionally.
+    \n\nBeyond my studies, I enjoy spending time with family and friends, who inspire me to grow both personally and professionally.
         
-    Currently seeking a 6-month internship in Data Science or applied AI starting mid-April 2027`     // Your introduction text (supports line breaks with \n\n)
+    \n\nCurrently seeking a 6-month internship in Data Science or applied AI starting mid-April 2027`     // Your introduction text (supports line breaks with \n\n)
   },
 
   // Contact section configuration

@@ -26,7 +26,7 @@ thumbnail: "/images/projects/credit_score/credit_score_distribution.png"
 
 ---
 
-## 01 / The problem and the data
+## 1. The problem and the data
 
 ### Two targets, two different definitions of success
 
@@ -75,9 +75,9 @@ Data audit → EDA → financial ratios → preprocessing
 
 ---
 
-## 02 / Explore the targets before choosing a model
+## 2. Explore the targets before choosing a model
 
-### 02.1 / What do the credit scores look like?
+### 2.1. What do the credit scores look like?
 
 ```python
 import matplotlib.pyplot as plt
@@ -98,7 +98,7 @@ plt.show()
 
 **Interpretation.** A plot like this describes differences between observed groups, but it does not by itself demonstrate that a score can reliably predict default. The source report does not provide group means or a statistical test, so no numerical separation is asserted here.
 
-### 02.2 / Is default a minority class?
+### 2.2. Is default a minority class?
 
 ```python
 counts = df["DEFAULT"].value_counts().sort_index()
@@ -130,9 +130,9 @@ plt.show()
 
 ---
 
-## 03 / Make financial variables more informative
+## 3. Make financial variables more informative
 
-### 03.1 / Why use ratios, not just balances?
+### 3.1 Why use ratios, not just balances?
 
 A debt of the same absolute amount can represent very different financial exposure depending on a customer's income and savings. Ratios express this context and may expose relationships obscured by raw monetary values.
 
@@ -173,7 +173,7 @@ engineered["expenditure_to_income"] = safe_ratio(engineered[cols["spending"]], e
 
 **Interpretation.** Missing or zero denominators require an explicit policy. Ratios can become extreme when their denominators are near zero; inspect their distributions and choose any clipping or imputation using training data only. The supplied report identifies these ratio families but does not supply the exact underlying column names or missing-value treatment.
 
-### 03.2 / How are predictors related?
+### 3.2 How are predictors related?
 
 ```python
 # Illustrative numeric correlation view; specify target and feature subset.
@@ -198,7 +198,7 @@ plt.show()
 
 ---
 
-## 04 / The experimental design
+## 4. The experimental design
 
 **A 70/30 split and separate preprocessing paths** help make the classification and regression analyses comparable. The example below keeps learned imputation, encoding and scaling inside a model pipeline. It is a recommended implementation template; the uploaded report does not provide the original pipeline code.
 
@@ -242,7 +242,7 @@ preprocess = ColumnTransformer([
 
 ---
 
-## 05 / PCA: less information, or less *useful* information?
+## 5. PCA: less information, or less *useful* information?
 
 PCA seeks orthogonal directions of maximal predictor variance. It does **not** use the target to decide which directions matter for default or score prediction.
 
@@ -282,7 +282,7 @@ plt.show()
 
 ---
 
-## 06 / Task A: predict default
+## 6. Task A: predict default
 
 ### Candidate models
 
@@ -389,7 +389,7 @@ print(coefficients.reindex(coefficients.abs().nlargest(15).index))
 
 ---
 
-## 07 / Task B: estimate credit scores
+## 7. Task B: estimate credit scores
 
 A regression model predicts a **number**, not a default class. I compared Linear Regression, Random Forest and XGBoost on the numerical `CREDIT_SCORE` target.
 
@@ -463,7 +463,7 @@ plt.show()
 
 ---
 
-## 08 / PCA versus original features: the decisive comparison
+## 8. PCA versus original features: the decisive comparison
 
 ### Implementation / a fair transformation comparison
 
@@ -488,7 +488,7 @@ print("Training-derived PCA components:", pca.n_components_)
 
 **Important:** The code above is a leakage-aware demonstration. The supplied report states that 18 components captured ~90.4% variance, but does not establish whether the historic PCA was fitted only on training data. Do not treat these results as independently reproduced here.
 
-### 08.1 / Classification after PCA
+### 8.1. Classification after PCA
 
 | Model | Accuracy | Recall | F1 | ROC-AUC |
 |:--|--:|--:|--:|--:|
@@ -501,7 +501,7 @@ print("Training-derived PCA components:", pca.n_components_)
 
 **What changed?** Relative to its original-feature counterpart, Logistic Regression's recall increased from **51.76% to 54.12%** and ROC-AUC from **0.6256 to 0.6530**, while its F1 decreased. XGBoost's ROC-AUC fell from **0.6137 to 0.5727**. PCA therefore affected the two classifiers differently.
 
-### 08.2 / Regression after PCA
+### 8.2. Regression after PCA
 
 | Model | MAE ↓ | RMSE ↓ | R² ↑ |
 |:--|--:|--:|--:|
@@ -518,9 +518,9 @@ print("Training-derived PCA components:", pca.n_components_)
 
 ---
 
-## 09 / Beyond prediction: relationships between variable groups
+## 9. Beyond prediction: relationships between variable groups
 
-### 09.1 / Canonical Correlation Analysis (CCA)
+### 9.1. Canonical Correlation Analysis (CCA)
 
 CCA searches for linear combinations of two variable groups that correlate as strongly as possible. The source study compared **financial condition** (income, savings, debt and ratios) against **spending behavior** (expenditure categories).
 
@@ -549,7 +549,7 @@ spending_columns = ["SPENDING_CATEGORY_1", "SPENDING_CATEGORY_2"]
 
 **Interpretation.** The reported first canonical correlation is high within the analyzed sample, but in-sample CCA can overfit, especially with correlated or numerous variables. It does not demonstrate causality or prove that one group replaces the other. No original CCA figure was supplied, so none is presented as a project figure here.
 
-### 09.2 / Correspondence Analysis (CA)
+### 9.2. Correspondence Analysis (CA)
 
 Correspondence Analysis explores associations in a **contingency table**. The source report states that it examined credit-score categories, gambling behavior and default outcomes, but provides neither the original table nor numerical CA coordinates.
 
@@ -568,7 +568,7 @@ Correspondence Analysis explores associations in a **contingency table**. The so
 
 ---
 
-## 10 / Findings at a glance
+## 10. Findings at a glance
 
 | Observation | Evidence from this study | Practical meaning |
 |:--|:--|:--|
@@ -584,7 +584,7 @@ Correspondence Analysis explores associations in a **contingency table**. The so
 
 ---
 
-## 11 / What I would improve before real-world use
+## 11. What I would improve before real-world use
 
 1. **Audit leakage and timing.** Ensure ratios, transformations, encoding and PCA are fitted on training data and use only information available at prediction time.
 2. **Assess stability.** Repeat evaluation with cross-validation and an independent, later-time dataset where possible; the available results come from a limited sample.
