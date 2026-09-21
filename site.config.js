@@ -2,10 +2,10 @@ module.exports = {
   // Site metadata
   name: "SEK Sopheak Voatei",
   title: "SEK Sopheak Voatei Portfolio",
-  description: "Bonjour to my chonky website",
+  description: "",
 
   // SEO & Metadata
-  siteUrl: "https://voatei.github.io/portfolio", // Your site URL (for SEO)
+  siteUrl: "https://sopheakvoatei.sek.github.io/", // Your site URL (for SEO)
   author: "SEK Sopheak Voatei", // Author name (for SEO)
   keywords: ["portfolio", "blog", "machine learning", "AI"], // Keywords for SEO
 
