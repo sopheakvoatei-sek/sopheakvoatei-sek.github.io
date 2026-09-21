@@ -34,7 +34,11 @@ module.exports = {
   aboutSection: {
     show: true,                      // Set to false to hide the About section
     title: "Personal",                  // Customize the section heading (e.g., "Bonjour", "Hello", "Introduction")
-    content: `Master’s student (M2) in Applied Mathematics in Data Science: Finance at Université Paris-Saclay, with hands-on experience in applied Artificial Intelligence through 2 internships. Interested in Data Science and AI, particularly in their pragmatic use to automate tasks, improve operational efficiency, and deliver concrete, data-driven solutions to business needs. Currently seeking a 6-month internship in Data Science or applied AI starting mid-April 2027.`     // Your introduction text (supports line breaks with \n\n)
+    content: `Master's student (M2) in Applied Mathematics, specializing in Data Science: Finance at Université Paris-Saclay.
+        What draws me to Data Science and AI is not only their ability to solve real-world problems, but also the opportunity to be part of an ever-evolving field where new technologies emerge and there is always something new to learn and explore.
+        Through two internships in applied AI, I have developed a deeper interest in using these technologies to automate tasks, improve efficiency, and build practical solutions.
+        Beyond my studies, I cherish spending time with family and friends, who inspire me to grow both personally and professionally.
+        Currently seeking a 6-month internship in Data Science or applied AI starting mid-April 2027`     // Your introduction text (supports line breaks with \n\n)
   },
 
   // Contact section configuration
