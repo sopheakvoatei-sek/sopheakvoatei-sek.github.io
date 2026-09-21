@@ -5,7 +5,7 @@ module.exports = {
   description: "",
 
   // SEO & Metadata
-  siteUrl: "https://sopheakvoatei.sek.github.io/", // Your site URL (for SEO)
+  siteUrl: "https://sopheakvoatei-sek.github.io/", // Your site URL (for SEO)
   author: "SEK Sopheak Voatei", // Author name (for SEO)
   keywords: ["portfolio", "blog", "machine learning", "AI"], // Keywords for SEO
 
@@ -101,7 +101,7 @@ module.exports = {
 
   // Social links for footer
   social: {
-    github: "https://github.com/voatei",
+    github: "https://github.com/sopheakvoatei-sek",
     linkedin: "https://linkedin.com/in/sopheak-voatei-sek",
     email: "sopheakvoateisek@gmail.com"
   },
