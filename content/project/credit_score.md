@@ -1,306 +1,267 @@
+
 ---
 title: "Credit Score Analysis & Risk Management (Python)"
 date: "2025-12-31"
-excerpt: "Credit risk analysis project using 84 financial and behavioral features to predict customer default and credit score. Applied statistical methods (PCA, CCA) and machine learning models (Logistic Regression, Random Forest, XGBoost), showing that ratio-based financial indicators and non-linear models significantly improve predictive performance and interpretability."
-tags: ["Python", "Machine Learning", "Logistic Regression", "Random Forest", "XGBoost", "PCA", "Classification", "Regression"]
-thumbnail: https://media.istockphoto.com/id/1938654475/fr/photo/concept-de-gestion-des-risques-%C3%A9conomiques-homme-daffaires-tenant-un-bloc-de-bois-avec-le.jpg?s=1024x1024&w=is&k=20&c=0czx8J0w9o3svQulY9vtqrDU4SseAk3mmTtxGoIZUx4=
+excerpt: "End-to-end credit risk analysis using financial and behavioral data from 1,000 customers. Applied statistical methods and machine learning to predict customer default and credit scores, achieving an R² of 0.7735 with Random Forest regression."
+tags: ["Python", "Machine Learning", "Credit Risk", "Logistic Regression", "Random Forest", "XGBoost", "PCA", "Classification", "Regression"]
+thumbnail: "/images/projects/credit_score/credit_score_distribution.png"
 ---
 
-**ENSIIE – Data Analysis Project (2025–2026)**  
-
-**Team Members**  
-KOUM Soknan  
-RA Veasna  
-DIN Sokheng  
-SEK Sopheak Voatei  
-THONG Ousaphea  
+**ENSIIE – Modeling & Regularized Regression (MRR) Project (2025–2026)**
 
 ---
 
 ## Project Overview
 
-This project answers a fundamental question in credit risk modeling:
+This project was completed as part of the *Modeling & Regularized Regression (MRR)* course at ENSIIE.
 
-**Can we predict customer default and credit score using detailed financial and behavioral data?**
+The objective was to investigate two questions:
 
-Dataset characteristics:
+> Can we predict whether a customer will default based on their financial and behavioral information?
 
-- 1000 customers  
-- 84 financial & behavioral features  
-- Engineered financial ratios  
-- Spending behavior across 11 categories  
-- Binary financial attributes  
+> Can we accurately estimate a customer's credit score using statistical and machine learning models?
 
----
+Using a dataset of **1,000 customers with 84 financial and behavioral features**, I explored an end-to-end machine learning workflow combining data preprocessing, feature engineering, statistical analysis, and predictive modeling.
 
-## Data Loading
-
-```python
-import pandas as pd
-import numpy as np
-
-df = pd.read_csv("credit_score.csv")
-df.head()
-```
-
-Basic inspection:
-
-```python
-df.info()
-df.describe()
-df.isnull().sum()
-```
-
-No missing values were found.
+The project focuses on two tasks: **default classification** and **credit score regression**, with an emphasis on model comparison, interpretability, and the practical implications of credit risk prediction.
 
 ---
 
-## Feature Engineering & Preprocessing
+## 1. Methodology & Machine Learning Pipeline
 
-### Encoding Categorical Variable
+The dataset contains financial information, transaction histories, spending patterns, and financial ratios describing customer behavior.
 
-```python
-df["CAT_GAMBLING"] = df["CAT_GAMBLING"].map({
-    "no": 0,
-    "low": 1,
-    "high": 2
-})
-```
+The analysis followed a structured workflow:
 
-### Log Transformation (Heavy-Tailed Variables)
+**Data Exploration → Feature Engineering → Preprocessing → Statistical Analysis → Predictive Modeling → Evaluation**
 
-```python
-import numpy as np
+The main steps included:
 
-skewed_cols = ["INCOME", "DEBT", "SAVINGS"]
+- **Data preparation:** Missing-value analysis, outlier detection, categorical encoding, and feature scaling.
+- **Feature engineering:** Financial ratios such as debt-to-income and savings-to-income.
+- **Statistical analysis:** PCA, Canonical Correlation Analysis (CCA), and Correspondence Analysis.
+- **Classification:** Logistic Regression, Random Forest, and XGBoost for predicting customer default.
+- **Regression:** Linear Regression, Random Forest, and XGBoost for estimating credit scores.
 
-for col in skewed_cols:
-    df[col] = np.log1p(df[col])
-```
-
-### Robust Scaling
-
-```python
-from sklearn.preprocessing import RobustScaler
-
-scaler = RobustScaler()
-X_scaled = scaler.fit_transform(df.drop(["DEFAULT", "CREDIT_SCORE"], axis=1))
-```
-
-Robust scaling stabilizes extreme financial behaviors without deleting valuable information.
+The models were evaluated using a 70/30 train-test split, with stratification for the classification task.
 
 ---
 
-## Exploratory Data Analysis
+## 2. Exploratory Data Analysis
+
+Before modeling, I explored the dataset to understand customer financial behavior and identify potential challenges.
 
 ### Credit Score Distribution
 
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
+![Credit Score Distribution](/images/projects/credit_score/credit_score_distribution.png)
 
-sns.histplot(df["CREDIT_SCORE"], kde=True)
-plt.title("Credit Score Distribution")
-plt.show()
-```
+The distribution analysis examines the variability of credit scores and their relationship with customer default status.
 
-### Default Balance
+It provides an initial understanding of the target variable and potential differences between customer risk groups.
 
-```python
-df["DEFAULT"].value_counts(normalize=True)
-```
+### Default Class Balance
 
-Ratio-based variables were the strongest predictors:
+![Default Class Balance](/images/projects/credit_score/default_class_balance.png)
 
-- Debt-to-Income  
-- Debt-to-Savings  
-- Expenditure-to-Income  
+The dataset contains more non-defaulting customers than defaulting customers.
 
-Correlation analysis:
+This imbalance introduces an important challenge: a model can achieve relatively high accuracy while failing to identify customers who actually default.
 
-```python
-corr = df.corr()
-corr["DEFAULT"].sort_values(ascending=False).head(10)
-```
+Therefore, **recall, F1-score, and ROC-AUC** were considered alongside accuracy when evaluating classification models.
+
+### Feature Correlation Analysis
+
+![Feature Correlation Analysis](/images/projects/credit_score/feature_correlation.png)
+
+Correlation analysis was used to investigate relationships between financial indicators and the target variables.
+
+Financial ratios and spending-related features emerged as relevant indicators, highlighting the importance of considering relationships between income, debt, savings, and expenditure rather than relying only on absolute monetary values.
 
 ---
 
-## Principal Component Analysis (PCA)
+## 3. Principal Component Analysis (PCA)
 
-```python
-from sklearn.decomposition import PCA
+Financial variables are often strongly correlated, introducing redundancy into the feature space.
 
-pca = PCA()
-X_pca = pca.fit_transform(X_scaled)
+I investigated Principal Component Analysis to determine whether dimensionality reduction could preserve the main structure of the data while improving predictive performance.
 
-explained_variance = np.cumsum(pca.explained_variance_ratio_)
-```
+### Explained Variance
 
-Selecting 18 components:
+![PCA Explained Variance](/images/projects/credit_score/cumulative_explain_var.png)
 
-```python
-pca = PCA(n_components=18)
-X_pca = pca.fit_transform(X_scaled)
-```
+Using a cumulative explained variance threshold of 90%, PCA retained:
 
-PCA explained 90% of total variance but did not significantly improve predictive performance.
+**18 principal components, explaining approximately 90.4% of total variance.**
+
+Although PCA substantially reduced the number of features, its effectiveness for prediction needed to be evaluated separately.
+
+Models trained on the original features were therefore compared with models trained on the PCA-transformed data.
 
 ---
 
-## Train-Test Split
+## 4. Default Prediction — Classification
 
-```python
-from sklearn.model_selection import train_test_split
+The first predictive task was to identify customers who may default.
 
-X = df.drop(["DEFAULT", "CREDIT_SCORE"], axis=1)
-y_class = df["DEFAULT"]
-y_reg = df["CREDIT_SCORE"]
+Three classification models were evaluated:
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y_class, test_size=0.3, random_state=42
-)
-```
+- **Logistic Regression:** An interpretable linear model for estimating default probability.
+- **Random Forest:** An ensemble model capable of capturing non-linear relationships.
+- **XGBoost:** A gradient-boosting model combining decision trees.
 
----
+Class weighting was applied to Logistic Regression and Random Forest to address the imbalance between defaulting and non-defaulting customers.
 
-## Default Classification
+### Classification Results
 
-### Logistic Regression
+| Model | Accuracy | Recall | F1-score | ROC-AUC |
+|---|---:|---:|---:|---:|
+| Logistic Regression | 66.67% | 51.76% | 0.4681 | 0.6256 |
+| Random Forest | 70.67% | 9.41% | 0.1538 | 0.6174 |
+| XGBoost | 71.33% | 21.18% | 0.2951 | 0.6137 |
 
-```python
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, roc_auc_score
+### Model Comparison & ROC Curves
 
-log_model = LogisticRegression(max_iter=1000)
-log_model.fit(X_train, y_train)
+![Classification Model Comparison](/images/projects/credit_score/classification_model_compare.png)
 
-y_pred = log_model.predict(X_test)
+The results reveal an important trade-off between overall accuracy and the ability to detect defaulters.
 
-print(classification_report(y_test, y_pred))
-print("ROC-AUC:", roc_auc_score(y_test, log_model.predict_proba(X_test)[:,1]))
-```
+**Logistic Regression achieved the highest recall (51.76%) and F1-score (0.4681)** among the tested models.
 
-Logistic Regression achieved the best recall and F1-score.
+Although Random Forest and XGBoost achieved higher overall accuracy, they missed a larger proportion of actual defaulters.
 
----
+This demonstrates why accuracy alone is insufficient for evaluating credit risk classification.
 
-### Random Forest Classifier
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-
-rf_model = RandomForestClassifier(n_estimators=200, random_state=42)
-rf_model.fit(X_train, y_train)
-
-y_pred_rf = rf_model.predict(X_test)
-```
+However, the ROC-AUC values of approximately 0.61–0.63 also indicate limited discriminative performance, suggesting that further improvements would be necessary before practical deployment.
 
 ---
 
-### XGBoost Classifier
+## 5. Credit Score Prediction — Regression
 
-```python
-from xgboost import XGBClassifier
+The second task was to predict customers' numerical credit scores.
 
-xgb_model = XGBClassifier(eval_metric="logloss")
-xgb_model.fit(X_train, y_train)
+Three regression models were compared:
 
-y_pred_xgb = xgb_model.predict(X_test)
-```
+- Linear Regression
+- Random Forest Regressor
+- XGBoost Regressor
 
-Logistic Regression performed best for identifying defaulters.
+Performance was evaluated using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R².
 
----
+### Regression Results
 
-## Credit Score Regression
+| Model | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Linear Regression | 21.64 | 29.68 | 0.7469 |
+| Random Forest | 20.59 | 28.08 | 0.7735 |
+| XGBoost | 21.68 | 29.53 | 0.7495 |
 
-### Linear Regression
+### Model Comparison
 
-```python
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+![Regression Model Comparison](/images/projects/credit_score/regression_model_compare.png)
 
-lin_model = LinearRegression()
-lin_model.fit(X_train, y_reg.loc[y_train.index])
+**Random Forest achieved the strongest regression performance**, with:
 
-y_pred_lin = lin_model.predict(X_test)
+- R² = 0.7735
+- MAE = 20.59
+- RMSE = 28.08
 
-print("R2:", r2_score(y_reg.loc[y_test.index], y_pred_lin))
-```
+The model explained approximately 77.35% of the variation in credit scores on the test set, with an average absolute prediction error of approximately 20.6 points.
 
----
+These results suggest that non-linear relationships and interactions between financial variables provide useful predictive information.
 
-### Random Forest Regressor
+However, Linear Regression also achieved a relatively strong R² of 0.7469, indicating that linear relationships explain a substantial portion of the variation in credit scores.
 
-```python
-from sklearn.ensemble import RandomForestRegressor
+### Feature Importance
 
-rf_reg = RandomForestRegressor(n_estimators=200, random_state=42)
-rf_reg.fit(X_train, y_reg.loc[y_train.index])
+![Random Forest Feature Importance](/images/projects/credit_score/features_predict_credit_score.png)
 
-y_pred_rf_reg = rf_reg.predict(X_test)
+Random Forest feature importance was examined to identify which financial indicators contributed most to credit score prediction.
 
-print("R2:", r2_score(y_reg.loc[y_test.index], y_pred_rf_reg))
-```
+The results highlight the relevance of financial ratios and expenditure-related variables.
 
-Random Forest achieved the best performance:
-
-- R² ≈ 0.77  
-- MAE ≈ 20.59  
-- RMSE ≈ 28.08  
+This reinforces the importance of feature engineering and shows how relationships between financial variables can provide useful predictive information.
 
 ---
 
-### XGBoost Regressor
+## 6. Does PCA Improve Predictive Performance?
 
-```python
-from xgboost import XGBRegressor
+To evaluate the effectiveness of dimensionality reduction, I compared models trained on the original features with models trained using 18 principal components.
 
-xgb_reg = XGBRegressor()
-xgb_reg.fit(X_train, y_reg.loc[y_train.index])
+### Classification with PCA
 
-y_pred_xgb_reg = xgb_reg.predict(X_test)
-```
+![PCA Classification Comparison](/images/projects/credit_score/PCA_classification_model_compare.png)
+
+PCA slightly improved Logistic Regression's ROC-AUC from 0.6256 to 0.6530 and recall from 51.76% to 54.12%.
+
+However, its accuracy and F1-score decreased, while XGBoost also experienced a reduction in ROC-AUC.
+
+### Regression with PCA
+
+![PCA Regression Comparison](/images/projects/credit_score/PCA_regression_model_compare.png)
+
+PCA substantially reduced regression performance.
+
+For example, Linear Regression's R² decreased from 0.7469 to 0.6058, while XGBoost's R² decreased from 0.7495 to 0.6113.
+
+**Key insight: Preserving variance does not necessarily preserve predictive information.**
+
+Although PCA retained approximately 90% of the dataset's variance, some information relevant to predicting the target variables was not adequately preserved.
+
+This demonstrates why dimensionality reduction should be evaluated using downstream predictive performance rather than explained variance alone.
 
 ---
 
-## Key Findings
+## 7. Key Findings
 
-**Default Prediction**
+The project highlighted four important lessons.
 
-- Logistic Regression best for recall  
-- Ratio-based financial indicators dominate  
-- Debt-to-Income is critical  
+**1. Accuracy is not sufficient for credit risk classification.**
 
-**Credit Score Prediction**
+Logistic Regression achieved the highest recall for identifying defaulters, while Random Forest and XGBoost achieved higher accuracy but missed more defaulting customers.
 
-- Random Forest performs best  
-- Non-linear interactions matter  
-- PCA reduces predictive performance  
+**2. Non-linear models can improve credit score prediction.**
+
+Random Forest achieved an R² of 0.7735 and an MAE of 20.59, outperforming the other regression models in this experiment.
+
+**3. Financial ratios provide valuable predictive information.**
+
+Relationships between debt, savings, income, and expenditure help capture customer financial behavior beyond individual monetary values.
+
+**4. Dimensionality reduction does not guarantee better performance.**
+
+PCA retained approximately 90% of total variance using 18 components but substantially reduced regression performance.
+
+These findings demonstrate the importance of balancing statistical analysis, feature engineering, model complexity, and evaluation metrics.
 
 ---
 
 ## Technical Stack
 
-- Python  
-- Pandas  
-- NumPy  
-- Scikit-learn  
-- XGBoost  
-- Matplotlib / Seaborn  
-- PCA, CCA, FCA  
+| Category | Tools & Methods |
+|---|---|
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn, XGBoost |
+| Statistical Analysis | PCA, CCA, Correspondence Analysis |
+| Visualization | Matplotlib, Seaborn |
+| Evaluation | Accuracy, Recall, F1, ROC-AUC, MAE, RMSE, R² |
 
 ---
 
-## Final Insight
+## Conclusion
 
-Credit risk modeling is not just about predicting numbers.
+This project demonstrates an end-to-end exploratory machine learning workflow for credit risk analysis, combining statistical methods, financial feature engineering, classification, and regression.
 
-It requires:
+The main takeaway is that **model selection depends on the prediction objective**: identifying potential defaulters requires different considerations from estimating numerical credit scores.
 
-- Careful feature engineering  
-- Financial intuition  
-- Interpretable modeling  
-- Balancing statistical rigor with business objectives  
+The experience strengthened my understanding of how to translate financial data into meaningful predictive insights while balancing model performance, interpretability, and practical risk considerations.
 
-This project demonstrates full machine learning pipeline implementation applied to real-world financial risk analysis.
+---
+
+## Explore the Full Analysis
+
+Interested in the technical details behind this project?
+
+Explore the complete methodology, statistical analysis, model implementation, and additional visualizations.
+
+[**View Full Technical Report →**](/project/credit_score_detailed/)
