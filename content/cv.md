@@ -4,38 +4,37 @@ title: CV
 
 ## Education
 
-**Master 1 – Applied Mathematics (in progress)** | ENSIIE – National School of Computer Science for Industry and Business  
-*September 2025 – Present | Évry, France*
+**Engineering Degree & MSc in Applied Mathematics and Data Science** | 2021 – Present  
+**ENSIIE (France) & Institute of Technology of Cambodia (ITC)** — Double-Degree Program
 
-- Courses: Supervised and unsupervised learning, stochastic processes and calculus, operations research, regression methods, time series, simulation methods, programming (Python).
-
-**Engineering Cycle – Grande École Program – First Year (1A)** | ENSIIE  
-*September 2024 – May 2025 | Évry, France*
-
-- Courses: Probability, statistics, graph theory, data analysis, databases, programming (Java, C, OCaml).
-
-**Engineering Degree – Applied Mathematics and Statistics** | Institute of Technology of Cambodia (ITC)  
-*2021 – 2024 | Phnom Penh, Cambodia*
-
-- Preparatory cycle and intensive scientific training (common core), equivalent to French preparatory classes for Grandes Écoles.
+- **Université Évry Paris-Saclay (2026–2027):** M2 Applied Mathematics – Data Science: Health, Insurance and Finance, in parallel with the ENSIIE engineering program.
+- **ENSIIE (2024–Present):** Engineering cycle, specializing in applied mathematics, statistics and machine learning.
+- **ITC (2021–2024):** Engineering studies in Applied Mathematics and Statistics.
 
 ---
 
 ## Experience
 
-**AI Engineer Intern** | AI FARM ROBOTIC  
+**AI Research Intern** | Techo Startup Center  
+*June 2026 – August 2026 | Phnom Penh, Cambodia*
+
+- Worked on Intelligent Document Processing for the Khmer language.
+- Annotated table rows and columns using LabelMe and fine-tuned YOLO26 for table structure detection.
+- Developed and evaluated RAG and vision-language models for PDF question answering with an interactive Gradio interface.
+- Generated a Khmer table dataset from English tables and benchmarked Surya OCR 2.
+
+**AI Engineer Intern** | AI Farm Robotics  
 *May 2025 – August 2025 | Phnom Penh, Cambodia*
 
-- Project: *SnapAI* – Khmer text extraction from natural scene images.
-- Implemented text detection and recognition models (EAST, PARSeq).
-- Fine-tuned deep learning models using LoRA.
-- Python development.
+- Developed **SnapAI**, a Khmer scene-text extraction system using EAST for text detection and PARSeq for recognition.
+- Fine-tuned deep learning models using LoRA and evaluated OCR performance on Khmer text.
 
 **Entrepreneurship Challenge – 26th Edition (IMT Starter)**  
-*October – November 2025 | Évry, France*
+*October 2025 – November 2025 | Évry, France*
 
-- Participated in an inter-school competition (100 teams, 6 students per team from Télécom SudParis, Institut Mines-Télécom Business School, ENSIIE).
-- Objective: create and pitch a startup project.
+- Participated in an inter-school startup competition involving 100 teams from Télécom SudParis, Institut Mines-Télécom Business School, and ENSIIE.
+- Collaborated in a six-member team to develop and pitch a startup project.
+
 
 ---
 
@@ -44,27 +43,17 @@ title: CV
 **Credit Score Analysis and Risk Management** | Python  
 *September – December 2025*
 
-- Team project (5 members).
-- Exploratory Data Analysis (EDA) and dimensionality reduction (PCA).
-- Default risk modeling using Logistic Regression, Random Forest, and XGBoost.
+- Team project (5 members): EDA, PCA, credit risk modeling (Logistic Regression, Random Forest, XGBoost), and performance comparison.
 
 **Regression Methods** | R  
 *September – December 2025*
 
-- Pair project.
-- Logistic regression with variable selection (AIC, Lasso, Elastic Net).
-- Handling class imbalance.
-- Modeling high-dimensional clinical and genomic data.
+- Pair project: variable selection (AIC, Lasso, Elastic Net), class imbalance handling, and modeling of clinical and genomic data.
 
 **Image Processing** | C  
 *December 2024 – January 2025*
 
-- Reading, writing, and processing images in PGM and PPM formats.
-
-**Hospital Appointment Management** | SQL  
-*March 2024 – May 2024*
-
-- Designed and implemented a database system for hospital appointment management.
+- Implemented algorithms for reading, writing, and transforming PGM/PPM images.
 
 ---
 
@@ -72,34 +61,29 @@ title: CV
 
 ### Technical Skills
 
-- **Python**: NumPy, Pandas, Matplotlib, Scikit-learn, OpenCV  
-- **Web Development**: HTML, CSS, PHP, SQL  
-- **Deep Learning**: PyTorch (model fine-tuning, LoRA), CNN-based text detection (EAST), sequence models (PARSeq)  
-- **Other**: R, C/C++, Java, OCaml, Bash, Git, LaTeX, Microsoft Office, Canva  
+- **Programming:** Python, R, C/C++, Java, SQL
+- **Data Science & Machine Learning:** NumPy, Pandas, Scikit-learn, regression, classification, PCA
+- **Deep Learning & Computer Vision:** PyTorch, OpenCV, LoRA, EAST, PARSeq, YOLO26
+- **Document AI & LLMs:** OCR, RAG, vision-language models, Surya OCR 2, Gradio
+- **Tools:** Git, LabelMe, LaTeX
 
 ### Soft Skills
 
-Adaptability, Analytical thinking, Problem solving, Curiosity, Time management, Teamwork  
+Adaptability, analytical thinking, problem solving, teamwork.
 
 ---
 
 ## Honors & Certifications
 
 **French Government Scholarship – France Excellence**  
-*April 2024 – June 2026 | France*
+*April 2024 – August 2026 | France*
 
-- Recipient of a two-year excellence scholarship.
-
-**Technovation Girls Cambodia 2020**  
-*June 2020 | Phnom Penh, Cambodia*
-
-- Top 10 National – *ROAM* application.
-- International 12-week technology entrepreneurship program.
+- Recipient of a two-year excellence scholarship awarded by the French Government.
 
 ---
 
 ## Languages
 
-- **Khmer**: Native  
-- **English**: B2 (IELTS)  
-- **French**: DELF B1
+- **Khmer:** Native
+- **English:** C1 (EnglishScore)
+- **French:** B2 (Bright Language Test)

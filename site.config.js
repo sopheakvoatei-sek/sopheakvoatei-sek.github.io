@@ -125,8 +125,8 @@ module.exports = {
   // Option 3: Leave as null to render from content/cv.md (markdown)
   // The markdown option provides the best SEO and accessibility
   cvFiles: {
-    en: "cv-en.pdf",
-    fr: "cv-fr.pdf",
+    en: "/cv/cv-en.pdf",
+    fr: "/cv/cv-fr.pdf",
   },
 
 

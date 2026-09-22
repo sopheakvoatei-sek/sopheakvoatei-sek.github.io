@@ -261,6 +261,6 @@ The experience strengthened my understanding of how to translate financial data 
 
 Interested in the technical details behind this project?
 
-Explore the complete methodology, statistical analysis, model implementation, and additional visualizations.
+Explore the detailed methodology, statistical analysis, model implementation and additional visualizations.
 
 [**View Full Technical Report →**](/project/credit_score_detailed/)

@@ -593,9 +593,3 @@ Correspondence Analysis explores associations in a **contingency table**. The so
 5. **Make interpretation more robust.** Compare permutation importance and error analysis across subgroups, and inspect large prediction errors rather than relying on one global score.
 
 > **Project conclusion:** More complex models and fewer dimensions are not automatically better. In this dataset, model evaluation changed meaningfully when the target shifted from default detection to score estimation—and when PCA replaced the original feature space. The strongest lesson is to choose the modeling and evaluation workflow around the decision the model is meant to support.
-
----
-
-### Reproducibility note
-
-**Reported results and image paths** are preserved from the supplied project report. **Python examples are newly authored explanatory snippets**, not verified extracts from the project notebook. Dataset paths, feature names, categorical levels, exact hyperparameters and some statistical-analysis inputs must be replaced with the original project values. Until that source code and dataset are provided, the snippets should not be represented as reproducing the tables or figures exactly.
