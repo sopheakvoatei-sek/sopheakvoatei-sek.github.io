@@ -1,6 +1,6 @@
 ---
 title: "Credit Score Analysis & Risk Management | Visual & Technical Report"
-date: "2025-12-31"
+date: "2026-02-31"
 excerpt: "An illustrated credit-risk case study covering 1,000 customers, default classification, credit-score regression, financial feature engineering, PCA and model interpretation. Includes selected Python implementation examples and reported test results."
 tags: ["Python", "Machine Learning", "Credit Risk", "Logistic Regression", "Random Forest", "XGBoost", "PCA", "Classification", "Regression"]
 thumbnail: "/images/projects/credit_score/credit_score_distribution.png"

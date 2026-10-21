@@ -27,14 +27,14 @@ module.exports = {
   profileImage: "images/me.JPG",
 
   // Current role and affiliation
-  role: "M2 student in Applied Mathematics in Data Science: Finance",
+  role: "M2 student in Applied Mathematics in Data Science",
   affiliation: "Université Paris-Saclay",
 
   // About section configuration
   aboutSection: {
     show: true,                      // Set to false to hide the About section
     title: "Personal",                  // Customize the section heading (e.g., "Bonjour", "Hello", "Introduction")
-    content: `Master's student (M2) in Applied Mathematics, specializing in Data Science: Finance at Université Paris-Saclay.   
+    content: `Master's student (M2) in Applied Mathematics, specializing in Data Science at Université Paris-Saclay.   
     \n\nWhat draws me to Data Science and AI is not only their ability to solve real-world problems, but also the opportunity to be part of an ever-evolving field where new technologies emerge and there is always something new to learn and explore.
         
     \nThroughout my two internships in applied AI, I have developed a deeper interest in using these technologies to automate tasks, improve efficiency, and build practical solutions.
@@ -49,7 +49,7 @@ module.exports = {
     show: true,  // Set to false to hide the entire Contact section on home page
     title: "Contact",  // Customize the section heading
     showEmail: true,  // Set to false to hide email
-    showGithub: true,  // Set to false to hide GitHub
+    showGithub: false,  // Set to false to hide GitHub
     showLinkedin: true,  // Set to false to hide LinkedIn
     showTwitter: true,  // Set to false to hide Twitter
   },
@@ -108,7 +108,6 @@ module.exports = {
 
   // Social links for footer
   social: {
-    github: "https://github.com/sopheakvoatei-sek",
     linkedin: "https://linkedin.com/in/sopheak-voatei-sek",
     email: "sopheakvoateisek@gmail.com"
   },
@@ -125,14 +124,14 @@ module.exports = {
   // Option 3: Leave as null to render from content/cv.md (markdown)
   // The markdown option provides the best SEO and accessibility
   cvFiles: {
-    en: "/cv/cv-en.pdf",
-    fr: "/cv/cv-fr.pdf",
+    en: "public/cv/cv-en.pdf",
+    fr: "public/cv/cv-fr.pdf",
   },
 
 
   // CV Page Configuration
   cvConfig: {
-    showDownloadButton: true,  // Set to false to hide the download button
+    showDownloadButton: false,  // Set to false to hide the download button
     showPrintButton: false,     // Set to false to hide the print button
   },
 
