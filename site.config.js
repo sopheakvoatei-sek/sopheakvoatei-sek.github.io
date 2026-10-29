@@ -52,6 +52,7 @@ module.exports = {
     showGithub: false,  // Set to false to hide GitHub
     showLinkedin: true,  // Set to false to hide LinkedIn
     showTwitter: true,  // Set to false to hide Twitter
+    showHuggingFace: true,
   },
 
   // Profile section configuration (home page sidebar)
@@ -109,7 +110,8 @@ module.exports = {
   // Social links for footer
   social: {
     linkedin: "https://linkedin.com/in/sopheak-voatei-sek",
-    email: "sopheakvoateisek@gmail.com"
+    email: "sopheakvoateisek@gmail.com",
+    huggingface: "https://huggingface.co/sopheakvoatei"
   },
 
   // CV Display Options
